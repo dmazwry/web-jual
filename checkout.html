@@ -1,152 +1,109 @@
 <!DOCTYPE html>
-<html lang="id">
+
+<html class="dark" lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout Produk</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .checkout-container {
-            background-color: white;
-            max-width: 450px;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            text-align: center;
-        }
-        .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .product-details {
-            padding: 25px;
-        }
-        .product-name {
-            font-size: 26px;
-            font-weight: 700;
-            margin: 0 0 10px;
-            color: #2c3e50;
-        }
-        .product-price {
-            font-size: 22px;
-            font-weight: 500;
-            color: #8e44ad;
-            margin: 0 0 25px;
-        }
-        .description {
-            font-size: 15px;
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .buy-button {
-            display: block;
-            background: linear-gradient(90deg, #8e44ad, #3498db);
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            transition: transform 0.2s ease;
-        }
-        .buy-button:hover {
-            transform: scale(1.05);
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout Summary</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+      body {
+        font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent;
+        
+          
+      }
     </style>
 </head>
-<body>
-    <div class="checkout-container">
-        <img id="product-image" src="" alt="Gambar Produk" class="product-image">
-        <div class="product-details">
-            <h1 id="product-name">Memuat produk...</h1>
-            <p id="product-price"></p>
-            <p id="product-description"></p>
-            <a id="buy-button" href="#" class="buy-button">Beli Sekarang</a>
-        </div>
-    </div>
+<body class="text-white bg-gradient-to-br from-[#1f1f1f] to-[#2a2a2a]">
 
-    <script>
-        // --- DATABASE PRODUK SEDERHANA ---
-        // Ganti nomor HP, harga, dan deskripsi sesuai kebutuhan Anda
-        const myPhoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Anda
-        const products = {
-            'youtube': {
-                name: 'YouTube Premium',
-                price: 'Rp 15.000 / bulan',
-                description: 'Nikmati YouTube tanpa iklan, putar di latar belakang, dan akses YouTube Music Premium.',
-                imageUrl: 'https://i.postimg.cc/P5G3hR8p/youtube-card.png',
-                whatsappText: 'Halo,%20saya%20tertarik%20dengan%20produk%20YouTube%20Premium.'
-            },
-            'canva': {
-                name: 'Canva Pro',
-                price: 'Rp 25.000 / bulan',
-                description: 'Akses semua fitur premium Canva untuk desain profesional tanpa batas.',
-                imageUrl: 'https://i.postimg.cc/k40x5CJq/canva-card.png',
-                whatsappText: 'Halo,%20saya%20tertarik%20dengan%20produk%20Canva%20Pro.'
-            },
-            'netflix': {
-                name: 'Netflix Premium',
-                price: 'Rp 55.000 / bulan',
-                description: 'Tonton film dan serial TV favoritmu dengan kualitas terbaik di semua perangkat.',
-                imageUrl: 'https://i.postimg.cc/d1MXyG0c/netflix-card.png',
-                whatsappText: 'Halo,%20saya%20tertarik%20dengan%20produk%20Netflix%20Premium.'
-            },
-            'vidio': {
-                name: 'Vidio Platinum',
-                price: 'Rp 30.000 / bulan',
-                description: 'Streaming tayangan olahraga, film lokal, dan serial original Vidio tanpa batas.',
-                imageUrl: 'https://i.postimg.cc/hG01j5bC/vidio-card.png',
-                whatsappText: 'Halo,%20saya%20tertarik%20dengan%20produk%20Vidio%20Platinum.'
-            }
-        };
-
-        // --- LOGIKA UNTUK MENAMPILKAN PRODUK ---
-        window.addEventListener('DOMContentLoaded', () => {
-            // 1. Baca 'id' produk dari URL
+<div class="relative container mx-auto max-w-lg p-4 min-h-screen flex flex-col">
+<header class="text-center py-4 relative">
+<h1 class="text-xl font-bold">Checkout Summary</h1>
+<div class="absolute top-4 right-0"><button class="w-8 h-8 flex items-center justify-center bg-gray-800/50 rounded-full">🌙</button></div>
+</header>
+<main class="flex-grow">
+<div class="bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 shadow-lg mt-4">
+<img alt="Product Image" class="rounded-lg mb-6 mx-auto w-2/3" id="product-image" src=""/>
+<h2 class="text-2xl font-bold" id="product-name"></h2>
+<p class="text-sm text-gray-300 mt-1" id="product-description"></p>
+<div class="border-t border-gray-600 my-6"></div>
+<div class="space-y-3 text-md">
+<div class="flex justify-between">
+<span class="text-gray-300">Price:</span>
+<span class="font-semibold" id="product-price"></span>
+</div>
+<div class="flex justify-between font-bold text-lg">
+<span>Total:</span>
+<span class="font-semibold" id="product-total"></span>
+</div>
+</div>
+<div class="mt-6">
+<label class="block text-sm font-medium text-gray-300 mb-2" for="payment-method">Pilih Metode Pembayaran</label>
+<div class="relative">
+<select class="w-full bg-gray-700/80 border border-gray-600 rounded-lg py-2 px-3 appearance-none focus:outline-none focus:ring-2 focus:ring-purple-500 backdrop-blur-sm" id="payment-method">
+<option value="">-- Pilih Opsi --</option>
+<option value="Dana">Dana</option>
+<option value="Gopay">Gopay</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400"><svg class="fill-current h-4 w-4" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg></div>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-4">
+<button class="w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white font-bold py-3 rounded-lg text-md shadow-md hover:opacity-90" id="whatsapp-button">
+                Lanjutkan ke Pembayaran →
+            </button>
+<a class="block w-full text-center text-gray-400 font-semibold mt-4 text-sm" href="index.html">&lt;&lt; Continue Shopping</a>
+<p class="text-center text-xs text-gray-500 mt-6">© 2025 Payment Solutions. Danimaru.</p>
+</footer>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
             const params = new URLSearchParams(window.location.search);
-            const productId = params.get('id');
+            const nama = params.get('nama');
+            const harga = params.get('harga');
+            const gambar = params.get('gambar');
+            const deskripsi = params.get('deskripsi');
 
-            // 2. Cari produk di database berdasarkan 'id'
-            const product = products[productId];
+            const formattedHarga = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(harga);
 
-            // 3. Ambil elemen HTML
-            const productImage = document.getElementById('product-image');
-            const productName = document.getElementById('product-name');
-            const productPrice = document.getElementById('product-price');
-            const productDescription = document.getElementById('product-description');
-            const buyButton = document.getElementById('buy-button');
+            document.getElementById('product-image').src = gambar;
+            document.getElementById('product-name').innerText = nama;
+            document.getElementById('product-description').innerText = deskripsi;
+            document.getElementById('product-price').innerText = formattedHarga;
+            document.getElementById('product-total').innerText = formattedHarga;
 
-            // 4. Jika produk ditemukan, update halaman. Jika tidak, tampilkan error.
-            if (product) {
-                document.title = `Checkout - ${product.name}`; // Update judul tab browser
-                productImage.src = product.imageUrl;
-                productName.textContent = product.name;
-                productPrice.textContent = product.price;
-                productDescription.textContent = product.description;
-                buyButton.href = `https://wa.me/${myPhoneNumber}?text=${product.whatsappText}`;
-            } else {
-                productName.textContent = 'Produk Tidak Ditemukan';
-                productDescription.textContent = 'Silakan kembali ke halaman utama dan pilih produk yang valid.';
-                buyButton.style.display = 'none'; // Sembunyikan tombol beli jika produk tidak ada
-            }
+            // === SCRIPT WHATSAPP ===
+            const whatsappButton = document.getElementById('whatsapp-button');
+            whatsappButton.addEventListener('click', function() {
+                // NOMOR WA SUDAH DIPERBARUI
+                const nomorWhatsApp = '6289603659756';
+
+                const metodeBayar = document.getElementById('payment-method').value;
+
+                if (!metodeBayar) {
+                    alert('Silakan pilih metode pembayaran terlebih dahulu.');
+                    return; 
+                }
+
+                const templatePesan = `Halo, saya mau pesan:
+*Produk:* ${nama}
+*Harga:* ${formattedHarga}
+*Metode Pembayaran:* ${metodeBayar}
+
+Mohon info lanjut untuk proses pembayarannya. Terima kasih.`;
+
+                const whatsappURL = `https://wa.me/${nomorWhatsApp}?text=${encodeURIComponent(templatePesan)}`;
+                window.open(whatsappURL, '_blank');
+            });
         });
     </script>
 </body>
