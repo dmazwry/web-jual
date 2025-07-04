@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Produk</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .checkout-container {
+            background-color: white;
+            max-width: 450px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-details {
+            padding: 25px;
+        }
+        .product-name {
+            font-size: 26px;
+            font-weight: 700;
+            margin: 0 0 10px;
+            color: #2c3e50;
+        }
+        .product-price {
+            font-size: 22px;
+            font-weight: 500;
+            color: #8e44ad;
+            margin: 0 0 25px;
+        }
+        .description {
+            font-size: 15px;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .buy-button {
+            display: block;
+            background: linear-gradient(90deg, #8e44ad, #3498db);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+        .buy-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <img id="product-image" src="" alt="Gambar Produk" class="product-image">
+        <div class="product-details">
+            <h1 id="product-name">Memuat produk...</h1>
+            <p id="product-price"></p>
+            <p id="product-description"></p>
+            <a id="buy-button" href="#" class="buy-button">Beli Sekarang</a>
+        </div>
+    </div>
+
+    <script>
+        // --- DATABASE PRODUK SEDERHANA ---
+        // Ganti nomor HP, harga, dan deskripsi sesuai kebutuhan Anda
+        const myPhoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Anda
+        const products = {
+            'youtube': {
+                name: 'YouTube Premium',
+                price: 'Rp 15.000 / bulan',
+                description: 'Nikmati YouTube tanpa iklan, putar di latar belakang, dan akses YouTube Music Premium.',
+                imageUrl: 'https://i.postimg.cc/P5G3hR8p/youtube-card.png',
+                whatsappText: 'Halo,%20saya%20tertarik%20dengan%20produk%20YouTube%20Premium.'
+            },
+            'canva': {
+                name: 'Canva Pro',
+                price: 'Rp 25.000 / bulan',
+                description: 'Akses semua fitur premium Canva untuk desain profesional tanpa batas.',
+                imageUrl: 'https://i.postimg.cc/k40x5CJq/canva-card.png',
+                whatsappText: 'Halo,%20saya%20tertarik%20dengan%20produk%20Canva%20Pro.'
+            },
+            'netflix': {
+                name: 'Netflix Premium',
+                price: 'Rp 55.000 / bulan',
+                description: 'Tonton film dan serial TV favoritmu dengan kualitas terbaik di semua perangkat.',
+                imageUrl: 'https://i.postimg.cc/d1MXyG0c/netflix-card.png',
+                whatsappText: 'Halo,%20saya%20tertarik%20dengan%20produk%20Netflix%20Premium.'
+            },
+            'vidio': {
+                name: 'Vidio Platinum',
+                price: 'Rp 30.000 / bulan',
+                description: 'Streaming tayangan olahraga, film lokal, dan serial original Vidio tanpa batas.',
+                imageUrl: 'https://i.postimg.cc/hG01j5bC/vidio-card.png',
+                whatsappText: 'Halo,%20saya%20tertarik%20dengan%20produk%20Vidio%20Platinum.'
+            }
+        };
+
+        // --- LOGIKA UNTUK MENAMPILKAN PRODUK ---
+        window.addEventListener('DOMContentLoaded', () => {
+            // 1. Baca 'id' produk dari URL
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+
+            // 2. Cari produk di database berdasarkan 'id'
+            const product = products[productId];
+
+            // 3. Ambil elemen HTML
+            const productImage = document.getElementById('product-image');
+            const productName = document.getElementById('product-name');
+            const productPrice = document.getElementById('product-price');
+            const productDescription = document.getElementById('product-description');
+            const buyButton = document.getElementById('buy-button');
+
+            // 4. Jika produk ditemukan, update halaman. Jika tidak, tampilkan error.
+            if (product) {
+                document.title = `Checkout - ${product.name}`; // Update judul tab browser
+                productImage.src = product.imageUrl;
+                productName.textContent = product.name;
+                productPrice.textContent = product.price;
+                productDescription.textContent = product.description;
+                buyButton.href = `https://wa.me/${myPhoneNumber}?text=${product.whatsappText}`;
+            } else {
+                productName.textContent = 'Produk Tidak Ditemukan';
+                productDescription.textContent = 'Silakan kembali ke halaman utama dan pilih produk yang valid.';
+                buyButton.style.display = 'none'; // Sembunyikan tombol beli jika produk tidak ada
+            }
+        });
+    </script>
+</body>
+</html>
