@@ -1,122 +1,95 @@
 <!DOCTYPE html>
-<html lang="id">
+
+<html class="dark" lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programmer Fomo</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-        :root {
-            --main-bg-color: #f4f7f6;
-            --content-bg-color: #ffffff;
-            --text-color: #2c3e50;
-            --primary-gradient: linear-gradient(90deg, #8e44ad, #3498db);
-            --inactive-tab-bg: #ecf0f1;
-            --inactive-tab-text: #7f8c8d;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--main-bg-color);
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-        }
-        .container { max-width: 480px; margin: 0 auto; }
-        .header { position: relative; height: 250px; color: white; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 60px; }
-        .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://i.pinimg.com/736x/82/35/0e/82350e93a85a23c575a7c9a622416f9f.jpg'); background-size: cover; background-position: center 30%; z-index: -1; }
-        .header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1)); z-index: -1; }
-        .header-nav { position: absolute; top: 15px; right: 20px; font-size: 24px; }
-        .profile-pic { position: absolute; bottom: -50px; width: 100px; height: 100px; border-radius: 50%; background-color: white; border: 4px solid white; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .profile-pic img { width: 80%; height: 80%; }
-        .profile-info { text-align: center; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
-        .profile-info h1 { margin: 0; font-size: 28px; }
-        .profile-info p { margin: 5px 0 0; font-size: 16px; font-weight: 500; opacity: 0.9; }
-        .content { background-color: var(--content-bg-color); margin-top: -25px; border-radius: 25px 25px 0 0; padding: 80px 20px 20px 20px; text-align: center; }
-        .content h2 { margin-top: 0; font-size: 22px; font-weight: 700; }
-        .info-box { border: 1px solid #d6bbfb; background-color: #f8f3ff; color: #5e3391; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 500; margin: 20px 0; }
-        .tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; }
-        .tab-btn { border: none; padding: 8px 16px; border-radius: 20px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; background-color: var(--inactive-tab-bg); color: var(--inactive-tab-text); transition: all 0.2s ease; }
-        .tab-btn.active { background: var(--primary-gradient); color: white; box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4); }
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .product-card { display: block; width: 100%; aspect-ratio: 1.5 / 1; border-radius: 15px; text-decoration: none; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.2s ease; }
-        .product-card:hover { transform: translateY(-5px); }
-        .product-card img { width: 100%; height: 100%; object-fit: cover; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aplikasi Premium Store</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+      body {
+        font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent;
+        
+          
+      }
+      .tab-content { transition: opacity 0.3s ease-in-out; }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="header-bg"></div>
-            <div class="header-nav"><i class="fas fa-moon"></i></div>
-            <div class="profile-info"><h1>Programmer Fomo</h1><p>Turis Aktif</p></div>
-            <div class="profile-pic"><img src="https://em-content.zobj.net/source/microsoft-teams/363/fire_1f525.png" alt="Profile Icon"></div>
-        </header>
-
-        <main class="content">
-            <h2>Product & Payment</h2>
-            <div class="info-box">Produk lainnya bisa chat owner (owner lagi malas ngoding)</div>
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="product1">PRODUCT 1</button>
-                <button class="tab-btn" data-tab="product2">PRODUCT 2</button>
-                <button class="tab-btn" data-tab="product3">PRODUCT 3</button>
-                <button class="tab-btn" data-tab="product4">PRODUCT 4</button>
-                <button class="tab-btn" data-tab="payment">PAYMENT LIST</button>
+<body class="text-white bg-gradient-to-br from-[#1f1f1f] to-[#2a2a2a]">
+<div class="relative container mx-auto max-w-lg p-4 min-h-screen">
+<header class="relative flex flex-col items-center justify-center text-center py-6">
+<img alt="Logo Aplikasi Premium" class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/112x112/8b5cf6/FFFFFF?text=AP"/>
+<div class="absolute top-20 right-0"><button class="w-8 h-8 flex items-center justify-center bg-gray-800/50 rounded-full">🌙</button></div>
+<div class="mt-2 flex items-center gap-2"><h1 class="text-2xl font-bold">Aplikasi Premium</h1></div>
+<p class="text-sm font-medium text-green-400">Aktif</p>
+</header>
+<main class="mt-4">
+<div class="bg-yellow-900/30 border border-yellow-600 text-yellow-300 text-sm rounded-lg p-3 text-center mb-6 backdrop-blur-sm">
+                Dibawah ini adalah list produk aplikasi Premium
             </div>
+<div class="flex space-x-2 overflow-x-auto pb-2 mb-6 text-sm" id="tab-buttons">
+<button class="tab-button font-semibold py-2 px-4 rounded-lg flex-shrink-0" data-gradient-from="from-purple-500" data-gradient-to="to-blue-500" data-tab-target="#aplikasi-premium">Aplikasi Premium</button>
+<button class="tab-button font-semibold py-2 px-4 rounded-lg flex-shrink-0" data-gradient-from="from-amber-500" data-gradient-to="to-orange-500" data-tab-target="#topup-game">Top Up Game</button>
+<button class="tab-button font-semibold py-2 px-4 rounded-lg flex-shrink-0" data-gradient-from="from-pink-500" data-gradient-to="to-rose-500" data-tab-target="#kebutuhan-sosmed">Kebutuhan Sosmed</button>
+</div>
+<div id="tab-content-panels">
+<div class="tab-content hidden grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-3" id="aplikasi-premium">
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Akses semua fitur pro Canva selama 1 bulan." data-gambar="./file-Kvw45sgvQt8aKCGGB5AQ4s.jpg" data-harga="15000" data-nama="Canva Pro" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="./file-Kvw45sgvQt8aKCGGB5AQ4s.jpg"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Canva</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Nonton tanpa iklan, putar di latar belakang." data-gambar="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" data-harga="25000" data-nama="YouTube Premium" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">YouTube</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Sharing profile, kualitas 4K UHD." data-gambar="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg" data-harga="35000" data-nama="Netflix Premium" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Netflix</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Dengarkan musik tanpa batas dan tanpa iklan." data-gambar="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" data-harga="20000" data-nama="Spotify Premium" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Spotify</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Nonton film, serial, dan olahraga live." data-gambar="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Vidio_logo.svg/2048px-Vidio_logo.svg.png" data-harga="30000" data-nama="Vidio Platinum" href="#"><div class="absolute top-2 right-2 bg-red-500/20 text-red-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Stok Habis</div><img class="w-10 h-10 mb-1 object-contain" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Vidio_logo.svg/2048px-Vidio_logo.svg.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Vidio</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Buka semua fitur editing video pro." data-gambar="./file-H7KBXXzFdmA4WbFyvy1hpZ.jpg" data-harga="22000" data-nama="CapCut Pro" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="./file-H7KBXXzFdmA4WbFyvy1hpZ.jpg"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">CapCut</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Motion graphics canggih di ponsel Anda." data-gambar="./file-8YLfCczT1USd7bY3abtzER.jpg" data-harga="18000" data-nama="Alight Motion Pro" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="./file-8YLfCczT1USd7bY3abtzER.jpg"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Alight Motion</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Lihat siapa yang menyimpan nomormu &amp; tanpa iklan." data-gambar="./file-VkDETbQEisRqzGtGB4m2bn.jpg" data-harga="28000" data-nama="GetContact Premium" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="./file-VkDETbQEisRqzGtGB4m2bn.jpg"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">GetContact</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Editor foto dan video dengan fitur Gold." data-gambar="https://i.ibb.co/gR2Yc0p/picsart-logo.png" data-harga="19000" data-nama="PicsArt Gold" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/gR2Yc0p/picsart-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">PicsArt</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Tontonan dari Disney, Pixar, Marvel, dll." data-gambar="https://i.ibb.co/1M2yqYm/disney-plus-logo.png" data-harga="39000" data-nama="Disney+ Hotstar" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/1M2yqYm/disney-plus-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Disney+</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Emoji kustom, upload besar, streaming HD." data-gambar="https://i.ibb.co/8Y4BqWf/discord-nitro-logo.png" data-harga="45000" data-nama="Discord Nitro" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/8Y4BqWf/discord-nitro-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Nitro</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Nonton drama Asia eksklusif tanpa iklan." data-gambar="https://i.ibb.co/Q8QJ8zQ/wetv-logo.png" data-harga="25000" data-nama="WeTV VIP" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/Q8QJ8zQ/wetv-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">WeTV</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Streaming drama dan anime populer." data-gambar="https://i.ibb.co/L5kR7wM/iqiyi-logo.png" data-harga="23000" data-nama="iQIYI VIP" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/L5kR7wM/iqiyi-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">iQIYI</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Nonton drama Korea terbaru dengan subtitle." data-gambar="https://i.ibb.co/y4YJq2W/viu-logo.png" data-harga="20000" data-nama="Viu Premium" href="#"><div class="absolute top-2 right-2 bg-red-500/20 text-red-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Stok Habis</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/y4YJq2W/viu-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Viu</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Lisensi resmi Adobe Photoshop 1 bulan." data-gambar="https://i.ibb.co/z57dYJv/photoshop-logo.png" data-harga="50000" data-nama="Adobe Photoshop" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/z57dYJv/photoshop-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Photoshop</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Akses Word, Excel, PowerPoint, &amp; OneDrive." data-gambar="https://i.ibb.co/zxbZf31/m365-logo.png" data-harga="40000" data-nama="Microsoft 365" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/zxbZf31/m365-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Microsoft 365</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Meeting tanpa batas waktu hingga 100 peserta." data-gambar="https://i.ibb.co/RzM34Y8/zoom-logo.png" data-harga="60000" data-nama="Zoom Pro" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/RzM34Y8/zoom-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Zoom Pro</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Lihat siapa yang suka kamu, unlimited likes." data-gambar="https://i.ibb.co/9G7jJmX/tinder-logo.png" data-harga="55000" data-nama="Tinder Gold" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/9G7jJmX/tinder-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Tinder Gold</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Belajar bahasa tanpa iklan dan tanpa batas." data-gambar="https://i.ibb.co/m8T2bBw/duolingo-logo.png" data-harga="40000" data-nama="Duolingo Super" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/m8T2bBw/duolingo-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">Duolingo</h4></a>
+<a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Akses semua film dan serial original HBO." data-gambar="https://i.ibb.co/xGLgKxt/hbo-go-logo.png" data-harga="30000" data-nama="HBO GO" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://i.ibb.co/xGLgKxt/hbo-go-logo.png"/><p class="text-xs text-gray-400">Aplikasi Premium</p><h4 class="font-semibold text-sm text-center">HBO GO</h4></a>
+</div>
+<div class="tab-content hidden grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-3" id="topup-game"><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk top up." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Pulsa Game 1" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Top Up</p><h4 class="font-semibold text-sm text-center">Pulsa Game 1</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk top up." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Pulsa Game 2" href="#"><div class="absolute top-2 right-2 bg-red-500/20 text-red-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Stok Habis</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Top Up</p><h4 class="font-semibold text-sm text-center">Pulsa Game 2</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk top up." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Pulsa Game 3" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Top Up</p><h4 class="font-semibold text-sm text-center">Pulsa Game 3</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk top up." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Pulsa Game 4" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Top Up</p><h4 class="font-semibold text-sm text-center">Pulsa Game 4</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk top up." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Pulsa Game 5" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Top Up</p><h4 class="font-semibold text-sm text-center">Pulsa Game 5</h4></a></div>
+<div class="tab-content hidden grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-3" id="kebutuhan-sosmed"><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk sosmed." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Sosmed Boost 1" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Sosmed</p><h4 class="font-semibold text-sm text-center">Sosmed Boost 1</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk sosmed." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Sosmed Boost 2" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Sosmed</p><h4 class="font-semibold text-sm text-center">Sosmed Boost 2</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk sosmed." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Sosmed Boost 3" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Sosmed</p><h4 class="font-semibold text-sm text-center">Sosmed Boost 3</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk sosmed." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Sosmed Boost 4" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Sosmed</p><h4 class="font-semibold text-sm text-center">Sosmed Boost 4</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk sosmed." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Sosmed Boost 5" href="#"><div class="absolute top-2 right-2 bg-red-500/20 text-red-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Stok Habis</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Sosmed</p><h4 class="font-semibold text-sm text-center">Sosmed Boost 5</h4></a><a class="new-product-card aspect-square h-full overflow-hidden bg-gray-800/80 backdrop-blur-sm shadow-lg rounded-xl p-3 flex flex-col justify-between items-center relative hover:bg-gray-700/80 transition" data-deskripsi="Contoh produk sosmed." data-gambar="https://placehold.co/40x40" data-harga="10000" data-nama="Sosmed Boost 6" href="#"><div class="absolute top-2 right-2 bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Tersedia</div><img class="w-10 h-10 mb-1 object-contain" src="https://placehold.co/40x40"/><p class="text-xs text-gray-400">Sosmed</p><h4 class="font-semibold text-sm text-center">Sosmed Boost 6</h4></a></div>
+</div>
+</main>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kode untuk fungsi tab
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            function activateTab(buttonToActivate) { if (!buttonToActivate) return; const targetId = buttonToActivate.dataset.tabTarget; const targetContent = document.querySelector(targetId); const fromColor = buttonToActivate.dataset.gradientFrom; const toColor = buttonToActivate.dataset.gradientTo; tabButtons.forEach(btn => { const btnFrom = btn.dataset.gradientFrom; const btnTo = btn.dataset.gradientTo; btn.classList.remove('bg-gray-700/80', 'backdrop-blur-sm', 'bg-clip-text', 'text-transparent', 'bg-gradient-to-r'); if (btnFrom) btn.classList.remove(btnFrom, btnTo); btn.classList.add('bg-gray-800/80', 'text-gray-300', 'backdrop-blur-sm'); }); buttonToActivate.classList.remove('bg-gray-800/80', 'text-gray-300'); buttonToActivate.classList.add('bg-gray-700/80', 'backdrop-blur-sm', 'bg-gradient-to-r', fromColor, toColor, 'bg-clip-text', 'text-transparent'); tabContents.forEach(content => { content.classList.add('hidden'); }); if (targetContent) { targetContent.classList.remove('hidden'); } }
+            tabButtons.forEach(button => { button.addEventListener('click', () => activateTab(button)); });
+            if (tabButtons.length > 0) { activateTab(tabButtons[0]); }
             
-            <div id="product1" class="tab-content active">
-                <div class="product-grid">
-                    <a href="#" class="product-card"><img src="https://i.postimg.cc/P5G3hR8p/youtube-card.png" alt="Produk Youtube Premium"></a>
-                    <a href="#" class="product-card"><img src="https://i.postimg.cc/P5G3hR8p/youtube-card.png" alt="Produk Youtube Premium"></a>
-                </div>
-            </div>
+            // SCRIPT UNTUK KARTU PRODUK YANG BISA DIKLIK
+            const productCards = document.querySelectorAll('.new-product-card');
+            productCards.forEach(card => {
+                card.addEventListener('click', function(event) {
+                    event.preventDefault(); // Mencegah link default
+                    const nama = this.dataset.nama;
+                    const harga = this.dataset.harga;
+                    const gambar = this.dataset.gambar;
+                    const deskripsi = this.dataset.deskripsi;
 
-            <div id="product2" class="tab-content">
-                <div class="product-grid">
-                    <a href="#" class="product-card"><img src="https://i.postimg.cc/k40x5CJq/canva-card.png" alt="Produk Canva"></a>
-                </div>
-            </div>
+                    // Cek jika stok habis
+                    if (this.querySelector('.bg-red-500\\/20')) {
+                        alert('Maaf, stok untuk produk ini sedang habis.');
+                        return;
+                    }
 
-            <div id="product3" class="tab-content">
-                <div class="product-grid">
-                    <a href="#" class="product-card"><img src="https://i.postimg.cc/d1MXyG0c/netflix-card.png" alt="Produk Netflix"></a>
-                </div>
-            </div>
-
-            <div id="product4" class="tab-content">
-                <div class="product-grid">
-                    <a href="#" class="product-card"><img src="https://i.postimg.cc/hG01j5bC/vidio-card.png" alt="Produk Vidio"></a>
-                </div>
-            </div>
-
-            <div id="payment" class="tab-content">
-                <h3>Metode Pembayaran</h3>
-                <p>Silakan hubungi owner melalui WhatsApp untuk pembayaran.</p>
-            </div>
-        </main>
-    </div>
-
-    <script>
-        const tabs = document.querySelectorAll('.tab-btn');
-        const contents = document.querySelectorAll('.tab-content');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(item => item.classList.remove('active'));
-                contents.forEach(item => item.classList.remove('active'));
-
-                tab.classList.add('active');
-                const targetId = tab.dataset.tab;
-                const targetContent = document.getElementById(targetId);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                }
+                    window.location.href = `checkout.html?nama=${encodeURIComponent(nama)}&harga=${harga}&gambar=${encodeURIComponent(gambar)}&deskripsi=${encodeURIComponent(deskripsi)}`;
+                });
             });
         });
     </script>
